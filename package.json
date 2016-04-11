@@ -1,0 +1,24 @@
+{
+  "name": "koa-grace-mock",
+  "version": "1.0.1",
+  "description": "KOA-grace mock数据的中间件",
+  "main": "index.js",
+  "scripts": {
+    "test": "DEBUG=* node --harmony ./example/app"
+  },
+  "keywords": [
+    "koa",
+    "mock",
+    "grace-mock"
+  ],
+  "dependencies": {
+    "koa": "^1.1.2"
+  },
+  "devDependencies": {
+    "debug": "^2.2.0",
+    "koa-grace-proxy": "^1.0.8"
+  },
+  "author": "wilee",
+  "license": "MIT",
+  "repository": "https://github.com/koa-grace/koa-grace-mock.git"
+}
