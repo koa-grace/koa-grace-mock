@@ -8,7 +8,6 @@ const debug = require('debug')('koa-grace:mock');
  * 
  * @param  {string} app     context
  * @param  {object} options 配置项
- *         {string} options.NODE_ENV 当前node执行环境，如果不等于`development`就不用mock
  *         {string} options.path mock数据地址
  *         {object} options.prefix mock数据的url前缀 
  * @return {function}
@@ -16,7 +15,6 @@ const debug = require('debug')('koa-grace:mock');
 function _mock(app, options) {
   let prefix = options.prefix;
   let dirPath = options.root;
-  let NODE_ENV = options.NODE_ENV;
 
   if ((prefix.lastIndexOf('/') + 1) != prefix.length) {
     prefix = prefix + '/'
@@ -28,7 +26,6 @@ function _mock(app, options) {
 
   return function*(next) {
     let curPath = this.path;
-    if (NODE_ENV != 'development') return yield * next;
     if (curPath.indexOf(prefix) != 0) return yield * next;
 
     let result = getMockFile(curPath);
