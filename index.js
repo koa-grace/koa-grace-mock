@@ -35,7 +35,7 @@ function _mock(app, options) {
     } else {
       this.body = result;
     }
-    
+
     debug(this.body);
   }
 
@@ -46,12 +46,15 @@ function _mock(app, options) {
       code: 0
     };
 
+    // 如果prefix之后不再有path则请求不合法
+    // 例如：prefix为 __MOCK__/pay/但请求路径为http://*/__MOCK__/pay/
     if (pathArr.length < 2) {
       result.code = 1;
       result.message = '请求路径不合法！';
       return result;
     }
 
+    // 根据path查找moc文件
     let pathDirArr = pathArr[1].split('/');
     let dir = '',
       lastArr;
@@ -66,20 +69,21 @@ function _mock(app, options) {
         dir += pathDirArr[i] + '/';
       } else {
         dir += pathDirArr[i] + '.json';
-        lastArr = pathDirArr.slice(i);
+        lastArr = pathDirArr.slice(i + 1);
         break;
       }
     }
-
     dir = path.resolve(dirPath, dir);
     debug('mock data at : ' + dir);
 
+    // 如果mock文件不存在则返回错误
     if (!fs.existsSync(dir)) {
       result.code = 2;
       result.message = '找不到mock文件：' + dir;
       return result;
     }
 
+    // 解析mock文件
     let mockFileData = fs.readFileSync(dir, 'utf8'),
       mockData;
     try {
@@ -95,9 +99,17 @@ function _mock(app, options) {
       return result;
     }
 
+    // 如果数据接口直接不是整个mock文件，而是mock对象的其中一个字段
+    // 则查找mock对象
     let data = mockData;
     for (let i = 0; i < lastArr.length; i++) {
       let index = lastArr[i];
+
+      // 如果请求路径是/__MOCK__/pay/test/test/
+      // 则lastArr的最后一个字段是""，则排除
+      if (index === '') {
+        continue; }
+        
       if (!data[index]) {
         result.code = 4;
         result.message = '找不到对应mock文件下的对应接口的数据' + dir;
