@@ -94,7 +94,13 @@ function _mock(app, options) {
       return result;
     }
 
-    if (!lastArr) {
+    // 如果请求路径是/__MOCK__/pay/test/test/
+    // 则lastArr的最后一个字段是""，则排除
+    if (lastArr && lastArr.lastIndexOf('') > -1) {
+      lastArr.splice(-1)
+    }
+
+    if (!lastArr || lastArr.length == 0) {
       result.data = mockData;
       return result;
     }
@@ -104,11 +110,6 @@ function _mock(app, options) {
     let data = mockData;
     for (let i = 0; i < lastArr.length; i++) {
       let index = lastArr[i];
-
-      // 如果请求路径是/__MOCK__/pay/test/test/
-      // 则lastArr的最后一个字段是""，则排除
-      if (index === '') {
-        continue; }
         
       if (!data[index]) {
         result.code = 4;
