@@ -23,8 +23,8 @@ app.use(proxy(app, {
 app.use(function*() {
   yield this.proxy({
     data1: 'test:test1',
-    data2: 'test:test2/test3',
-    data3: 'test:test4/test5/test6',
+    data2: 'test:test2/test3?test=test',
+    data3: 'test:test4/test5/test6?test=test',
   });
 
   this.body = this.backData || 'test';

@@ -39,6 +39,15 @@ function _mock(app, options) {
     debug(this.body);
   }
 
+  /**
+   * 去除连接中的请求参数
+   * @param  {String} url 请求URL
+   * @return {String}     请求参数
+   */
+  function removeQuery(url){
+    return url.split('?')[0];
+  }
+
   function getMockFile(curPath) {
     let pathArr = curPath.split(prefix);
 
@@ -55,7 +64,7 @@ function _mock(app, options) {
     }
 
     // 根据path查找moc文件
-    let pathDirArr = pathArr[1].split('/');
+    let pathDirArr = removeQuery(pathArr[1]).split('/');
     let dir = '',
       lastArr;
     for (let i = 0; i < pathDirArr.length; i++) {
