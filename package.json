@@ -1,6 +1,6 @@
 {
   "name": "koa-grace-mock",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "KOA-grace mock数据的中间件",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,8 @@
     "grace-mock"
   ],
   "dependencies": {
-    "koa": "^1.1.2"
+    "koa": "^1.1.2",
+    "strip-json-comments": "^2.0.1"
   },
   "devDependencies": {
     "debug": "^2.2.0",

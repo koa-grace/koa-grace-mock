@@ -1,26 +1,40 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/Users/xiongweilie/.nvm/versions/node/v4.2.6/bin/node',
-1 verbose cli   '/Users/xiongweilie/.nvm/versions/node/v4.2.6/bin/npm',
-1 verbose cli   'run',
-1 verbose cli   'dev' ]
-2 info using npm@3.5.3
-3 info using node@v4.2.6
-4 verbose stack Error: missing script: dev
-4 verbose stack     at run (/Users/xiongweilie/.nvm/versions/node/v4.2.6/lib/node_modules/npm/lib/run-script.js:147:19)
-4 verbose stack     at /Users/xiongweilie/.nvm/versions/node/v4.2.6/lib/node_modules/npm/lib/run-script.js:57:5
-4 verbose stack     at /Users/xiongweilie/.nvm/versions/node/v4.2.6/lib/node_modules/npm/node_modules/read-package-json/read-json.js:345:5
-4 verbose stack     at checkBinReferences_ (/Users/xiongweilie/.nvm/versions/node/v4.2.6/lib/node_modules/npm/node_modules/read-package-json/read-json.js:309:45)
-4 verbose stack     at final (/Users/xiongweilie/.nvm/versions/node/v4.2.6/lib/node_modules/npm/node_modules/read-package-json/read-json.js:343:3)
-4 verbose stack     at then (/Users/xiongweilie/.nvm/versions/node/v4.2.6/lib/node_modules/npm/node_modules/read-package-json/read-json.js:113:5)
-4 verbose stack     at /Users/xiongweilie/.nvm/versions/node/v4.2.6/lib/node_modules/npm/node_modules/read-package-json/read-json.js:232:12
-4 verbose stack     at /Users/xiongweilie/.nvm/versions/node/v4.2.6/lib/node_modules/npm/node_modules/graceful-fs/graceful-fs.js:76:16
-4 verbose stack     at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:380:3)
-5 verbose cwd /Users/xiongweilie/projects/github/koa-grace-mock
-6 error Darwin 14.4.0
-7 error argv "/Users/xiongweilie/.nvm/versions/node/v4.2.6/bin/node" "/Users/xiongweilie/.nvm/versions/node/v4.2.6/bin/npm" "run" "dev"
-8 error node v4.2.6
-9 error npm  v3.5.3
-10 error missing script: dev
-11 error If you need help, you may report this error at:
-11 error     <https://github.com/npm/npm/issues>
-12 verbose exit [ 1, true ]
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'run', 'test' ]
+2 info using npm@2.15.1
+3 info using node@v4.4.4
+4 verbose run-script [ 'pretest', 'test', 'posttest' ]
+5 info pretest koa-grace-mock@1.0.4
+6 info test koa-grace-mock@1.0.4
+7 verbose unsafe-perm in lifecycle true
+8 info koa-grace-mock@1.0.4 Failed to exec test script
+9 verbose stack Error: koa-grace-mock@1.0.4 test: `DEBUG=* node --harmony ./example/app`
+9 verbose stack Exit status 1
+9 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:217:16)
+9 verbose stack     at emitTwo (events.js:87:13)
+9 verbose stack     at EventEmitter.emit (events.js:172:7)
+9 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:24:14)
+9 verbose stack     at emitTwo (events.js:87:13)
+9 verbose stack     at ChildProcess.emit (events.js:172:7)
+9 verbose stack     at maybeClose (internal/child_process.js:827:16)
+9 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
+10 verbose pkgid koa-grace-mock@1.0.4
+11 verbose cwd /Users/xiongweilie/projects/github/koa-grace-mock
+12 error Darwin 14.4.0
+13 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "run" "test"
+14 error node v4.4.4
+15 error npm  v2.15.1
+16 error code ELIFECYCLE
+17 error koa-grace-mock@1.0.4 test: `DEBUG=* node --harmony ./example/app`
+17 error Exit status 1
+18 error Failed at the koa-grace-mock@1.0.4 test script 'DEBUG=* node --harmony ./example/app'.
+18 error This is most likely a problem with the koa-grace-mock package,
+18 error not with npm itself.
+18 error Tell the author that this fails on your system:
+18 error     DEBUG=* node --harmony ./example/app
+18 error You can get information on how to open an issue for this project with:
+18 error     npm bugs koa-grace-mock
+18 error Or if that isn't available, you can get their info via:
+18 error
+18 error     npm owner ls koa-grace-mock
+18 error There is likely additional logging output above.
+19 verbose exit [ 1, true ]

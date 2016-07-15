@@ -3,6 +3,7 @@
 const path = require('path');
 const fs = require('fs');
 const debug = require('debug')('koa-grace:mock');
+const stripJsonComments = require('strip-json-comments');
 
 /**
  * 
@@ -96,7 +97,8 @@ function _mock(app, options) {
     let mockFileData = fs.readFileSync(dir, 'utf8'),
       mockData;
     try {
-      mockData = JSON.parse(mockFileData);
+      // stripJsonComments 允许JSON文件添加注释
+      mockData = JSON.parse(stripJsonComments(mockFileData));
     } catch (err) {
       result.code = 3;
       result.message = 'mock文件格式不合法' + dir;
